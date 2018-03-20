@@ -3,19 +3,14 @@ from setuptools import setup
 setup(
     author="azcoigreach",
     author_email="azcoigreach@gmail.com",
-    name = 'Wordcloud Maker',
-    version = '0.2.4',
-    py_modules = ['wordcloud_maker'],
+    name = 'scroll_pickle',
+    version = '0.1.0',
+    py_modules = ['scroll_pickle'],
     install_requires = [
         'click',
         'colorama',
         'coloredlogs',
-        'pymongo',
-        'matplotlib',
-        'pillow',
-        'wordcloud',
-        'pyfiglet',
-        'numpy',
+        'scrollphathd'
     ],
     entry_points = '''
         [console_scripts]
