@@ -22,9 +22,12 @@ logger = logging.getLogger(__name__)
 @click.command()
 @click.option('--debug', is_flag=True,
               help='Debug Mode')
+@click.option('--home', type=click.Path(exists=True, file_okay=False,
+                                        resolve_path=True),
+              help='Changes the folder to operate on.')
 @click.argument('input', type=click.File('rb'))
 
-def main(debug, input):
+def main(debug, home, input):
     '''
     ** Scroll pickle data on Pimoroni Scroll Phat HD. **
 
@@ -41,7 +44,7 @@ def main(debug, input):
     else:
         logger.setLevel(logging.INFO)
     
-    with open(input) as f:
+    with open(home + input) as f:
         lines = pickle.load(f)
         logger.debug(lines)
     
