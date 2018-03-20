@@ -64,7 +64,7 @@ def main(debug, file):
             freq = json.loads(freq)
             lines.append(freq)
     except:
-        for i in iter(p_data):
+        for i in p_data:
             lines.append(i)
 
     logger.debug('words list: [%s] %s', type(lines), lines)
