@@ -42,9 +42,9 @@ def main(debug, input):
         logger.setLevel(logging.INFO)
     
     with open(input, 'rb') as f:
-        # lines = pickle.load(f)
-        # logger.debug(lines)
-        pass
+        lines = pickle.load(f)
+        logger.debug(lines)
+    
     # Uncomment to rotate 180 degrees
     scrollphathd.rotate(180)
 
