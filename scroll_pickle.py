@@ -17,21 +17,22 @@ import scrollphathd
 coloredlogs.install(level='DEBUG')
 logger = logging.getLogger(__name__)
 
-class Config(object):
-    def __init__(self):
-        self.debug = False
-
-pass_config = click.make_pass_decorator(Config, ensure=True)
 
 # Scoll Pickle
-
+@click.command()
 @click.option('--debug', is_flag=True,
               help='Debug Mode')
-@click.option('--working_directory', '-w', type=click.Path())
+@click.argument('input', type=click.File('rb'), nargs=-1)
 
-def main(debug, working_directory):
+def main(debug, input):
     '''
-    Scroll pickle data on Pimoroni Scroll Phat HD
+    Scroll pickle data on Pimoroni Scroll Phat HD.
+
+    \b
+    Input file must be pickle.
+
+    \b
+    Requires ScrollPhatHD hardware with RaspberryPi
     '''
     init(convert=True)
     if debug is True:
@@ -40,14 +41,7 @@ def main(debug, working_directory):
     else:
         logger.setLevel(logging.INFO)
 
-    print("""
-    Scroll pHAT HD: Advanced Scrolling
-
-    Advanced scrolling example which displays a message line-by-line
-    and then skips back to the beginning.
-
-    Press Ctrl+C to exit.
-    """)
+    
 
     # Uncomment to rotate 180 degrees
     #scrollphathd.rotate(180)
