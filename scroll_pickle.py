@@ -41,6 +41,8 @@ def main(debug, input):
     else:
         logger.setLevel(logging.INFO)
     
+    lines = []
+
     with open(input, 'rb') as f:
         lines = pickle.load(f)
         logger.debug(lines)
