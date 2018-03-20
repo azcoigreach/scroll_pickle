@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 #               help='Changes the folder to operate on.')
 @click.argument('file', type=click.File('rb'))
 
-def main(debug, home, file):
+def main(debug, file):
     '''
     ** Scroll pickle data on Pimoroni Scroll Phat HD. **
 
