@@ -26,14 +26,13 @@ logger = logging.getLogger(__name__)
 
 def main(debug, input):
     '''
-    Scroll pickle data on Pimoroni Scroll Phat HD.
-        scroll_pickle [filename].pickle
-        
-    \b
-    Input file must be pickle.
+    ** Scroll pickle data on Pimoroni Scroll Phat HD. **
 
     \b
-    Requires ScrollPhatHD hardware with RaspberryPi
+    scroll_pickle [filename].pickle
+
+    \b
+    ** Requires ScrollPhatHD hardware with RaspberryPi **
     '''
     init(convert=True)
     if debug is True:
