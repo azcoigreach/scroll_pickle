@@ -41,7 +41,8 @@ def main(debug, input):
     else:
         logger.setLevel(logging.INFO)
     
-    for f in input:
+    with open(input, rb) as f:
+        lines = pickle.load(f)
         logger.debug(f)
 
     # Uncomment to rotate 180 degrees
@@ -57,12 +58,12 @@ def main(debug, input):
     delay = 0.03
 
     # Change the lines below to your own message
-    lines = ["In the old #BILGETANK we'll keep you in the know",
-            "In the old #BILGETANK we'll fix your techie woes",
-            "And we'll make things",
-            "And we'll break things",
-            "'til we're altogether aching",
-            "Then we'll grab a cup of grog down in the old #BILGETANK"]
+    # lines = ["In the old #BILGETANK we'll keep you in the know",
+    #         "In the old #BILGETANK we'll fix your techie woes",
+    #         "And we'll make things",
+    #         "And we'll break things",
+    #         "'til we're altogether aching",
+    #         "Then we'll grab a cup of grog down in the old #BILGETANK"]
 
     # Determine how far apart each line should be spaced vertically
     line_height = scrollphathd.DISPLAY_HEIGHT + 2
