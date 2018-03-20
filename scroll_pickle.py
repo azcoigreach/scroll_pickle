@@ -40,11 +40,12 @@ def main(debug, input):
         logger.debug('<<<DEBUG MODE>>>')
     else:
         logger.setLevel(logging.INFO)
-
     
+    for f in input:
+        logger.debug(f)
 
     # Uncomment to rotate 180 degrees
-    #scrollphathd.rotate(180)
+    scrollphathd.rotate(180)
 
     # Dial down the brightness
     scrollphathd.set_brightness(0.2)
