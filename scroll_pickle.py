@@ -60,11 +60,11 @@ def main(debug, file):
                     count_value = value
                     logger.debug(count_value)
 
-            freq = json.dumps({id_value : count_value})
-            freq = json.loads(freq)
-            lines.append(freq)
+            data = str(id_value + ' : ' + count_value)
+            
+            lines.append(data)
     except:
-        lines = p_data.readlines()
+        lines = str(p_data)
 
     logger.debug('words list: [%s] %s', type(lines), lines)
 
