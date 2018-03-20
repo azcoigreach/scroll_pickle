@@ -14,6 +14,6 @@ setup(
     ],
     entry_points = '''
         [console_scripts]
-        wordcloud_maker=wordcloud_maker:main
+        scroll_pickle=scroll_pickle:main
     ''',
 )
