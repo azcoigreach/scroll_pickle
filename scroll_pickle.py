@@ -23,38 +23,23 @@ class Config(object):
 
 pass_config = click.make_pass_decorator(Config, ensure=True)
 
-# CLI Interface
+# Scoll Pickle
 
-@click.group()
 @click.option('--debug', is_flag=True,
               help='Debug Mode')
 @click.option('--working_directory', '-w', type=click.Path())
-@pass_config
-def main(config, debug, working_directory):
+
+def main(debug, working_directory):
     '''
     Scroll pickle data on Pimoroni Scroll Phat HD
     '''
     init(convert=True)
-    config.debug = debug
-    config.working_directory = working_directory
     if debug is True:
         logger.setLevel(logging.DEBUG)
         logger.debug('<<<DEBUG MODE>>>')
     else:
         logger.setLevel(logging.INFO)
 
-    if working_directory is None:
-        config.working_directory = '.'
-        logger.debug('working_directory is %s', config.working_directory)
-    elif os.path.exists(working_directory) is False:
-        os.mkdir(working_directory)
-        logger.debug('working_directory created as %s', config.working_directory)
-    
-
-# Scoll Pickle
-
-@main.command()
-def scroll_pickle():
     print("""
     Scroll pHAT HD: Advanced Scrolling
 
