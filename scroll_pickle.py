@@ -27,7 +27,8 @@ logger = logging.getLogger(__name__)
 def main(debug, input):
     '''
     Scroll pickle data on Pimoroni Scroll Phat HD.
-
+        scroll_pickle [filename].pickle
+        
     \b
     Input file must be pickle.
 
