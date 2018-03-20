@@ -48,7 +48,7 @@ def main(debug, file):
 
     # with open(home, input) as f:
     #     lines = pickle.load(f)
-    logger.debug(lines)
+    logger.debug(type(lines))
     
     # # Uncomment to rotate 180 degrees
     # scrollphathd.rotate(180)
