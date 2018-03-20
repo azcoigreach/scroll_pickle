@@ -34,14 +34,14 @@ def main(debug, input):
     \b
     ** Requires ScrollPhatHD hardware with RaspberryPi **
     '''
-    init(convert=True)
+    init(convert=False)
     if debug is True:
         logger.setLevel(logging.DEBUG)
         logger.debug('<<<DEBUG MODE>>>')
     else:
         logger.setLevel(logging.INFO)
     
-    with open(input, rb) as f:
+    with open(input, 'rb') as f:
         lines = pickle.load(f)
         logger.debug(f)
 
