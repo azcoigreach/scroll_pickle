@@ -44,12 +44,31 @@ def main(debug, file):
     else:
         logger.setLevel(logging.INFO)
     
-    lines = pickle.load(file)
+    p_data = pickle.load(file)
 
-    # with open(home, input) as f:
-    #     lines = pickle.load(f)
-    logger.debug(type(lines))
+    logger.debug(type(p_data))
     
+    lines = []
+
+    try:
+        for i in iter(p_data):
+            for key, value in i.items():
+                if key == '_id':
+                    id_value = value
+                    logger.debug(id_value)
+                if key == 'count':
+                    count_value = value
+                    logger.debug(count_value)
+
+            freq = json.dumps({id_value : count_value})
+            freq = json.loads(freq)
+            lines.append(freq)
+    except:
+        for i in iter(p_data):
+            lines.append(i)
+
+    logger.debug('words list: [%s] %s', type(lines), lines)
+
     # Uncomment to rotate 180 degrees
     scrollphathd.rotate(180)
 
