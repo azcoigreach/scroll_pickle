@@ -22,10 +22,10 @@ logger = logging.getLogger(__name__)
 @click.command()
 @click.option('--debug', is_flag=True,
               help='Debug Mode')
-@click.option('--home', type=click.Path(exists=True, file_okay=False,
-                                        resolve_path=True),
-              help='Changes the folder to operate on.')
-@click.argument('input', type=click.File('rb'))
+# @click.option('--home', '-h', type=click.Path(exists=True, file_okay=False,
+#                                         resolve_path=True),
+#               help='Changes the folder to operate on.')
+@click.argument('file', type=click.File('rb'))
 
 def main(debug, home, input):
     '''
@@ -37,16 +37,18 @@ def main(debug, home, input):
     \b
     ** Requires ScrollPhatHD hardware with RaspberryPi **
     '''
-    init(convert=False)
+    init(convert=True)
     if debug is True:
         logger.setLevel(logging.DEBUG)
         logger.debug('<<<DEBUG MODE>>>')
     else:
         logger.setLevel(logging.INFO)
     
-    with open(home, input) as f:
-        lines = pickle.load(f)
-        logger.debug(lines)
+    lines = pickle.load(open(file))
+
+    # with open(home, input) as f:
+    #     lines = pickle.load(f)
+    logger.debug(lines)
     
     # Uncomment to rotate 180 degrees
     scrollphathd.rotate(180)
