@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 @click.command()
 @click.option('--debug', is_flag=True,
               help='Debug Mode')
-@click.argument('input', type=click.File('rb'), nargs=-1)
+@click.argument('input', type=click.File('rb'))
 
 def main(debug, input):
     '''
@@ -41,7 +41,7 @@ def main(debug, input):
     else:
         logger.setLevel(logging.INFO)
     
-    with open(input, 'rb') as f:
+    with open(input) as f:
         lines = pickle.load(f)
         logger.debug(lines)
     
