@@ -61,7 +61,7 @@ def main(debug, file):
                     # logger.debug(count_value)
 
             data = str(id_value + count_value)
-            logger.debug('data type'type(data))
+            logger.debug('data type: %s', type(data))
             logger.debug(data)
             lines.append(data)
     except:
