@@ -76,8 +76,8 @@ def main(config, debug, file):
         logger.setLevel(logging.INFO)
     config.file = file
 
-    t1 = Thread(target=refresh_data, args=(config))
-    t2 = Thread(target=display_data, args=(config))
+    t1 = Thread(target=refresh_data)
+    t2 = Thread(target=display_data)
 
     t1.start()
     t2.start()
