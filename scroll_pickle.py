@@ -26,13 +26,14 @@ pass_config = click.make_pass_decorator(Config, ensure=True)
 
 @pass_config
 def refresh_data(config):
-    p_data = pickle.load(config.file)
-    logger.debug('p_data type: %s',type(p_data))
+    config.p_data = pickle.load(config.file)
+    logger.debug('p_data type: %s - refresh',type(config.p_data))
         
 
 @pass_config
 def display_data(config):
-    scrollphathd.write_string(str(p_data), x=0, y=0, font=font3x5, brightness=0.2)
+    logger.debug('p_data type: %s - display',type(config.p_data))
+    scrollphathd.write_string(str(config.p_data), x=0, y=0, font=font3x5, brightness=0.2)
     scrollphathd.show()
     scrollphathd.scroll()
 
@@ -65,5 +66,5 @@ def main(config, debug, file):
 
     while True:
         refresh_data()
-        
+        display_data()
         time.sleep(delay)
