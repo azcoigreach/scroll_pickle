@@ -17,14 +17,28 @@ from scrollphathd.fonts import *
 coloredlogs.install(level='DEBUG')
 logger = logging.getLogger(__name__)
 
+class Config(object):
+    def __init__(self):
+        self.debug = False
+
+pass_config = click.make_pass_decorator(Config, ensure=True)
+
+@pass_config
+def refresh_data(config):
+        p_data = pickle.load(config.file)
+
+        logger.debug('p_data type: %s',type(p_data))
+        
+        scrollphathd.write_string(str(p_data).encode('utf-8'), x=0, y=0, font=font3x5, brightness=0.2)
+
 
 # Scoll Pickle
 @click.command()
 @click.option('--debug', is_flag=True,
               help='Debug Mode')
 @click.argument('file', type=click.File('rb'))
-
-def main(debug, file):
+@pass_config
+def main(config, debug, file):
     '''
     ** Scroll pickle data on Pimoroni Scroll Phat HD. **
 
@@ -40,40 +54,13 @@ def main(debug, file):
         logger.debug('<<<DEBUG MODE>>>')
     else:
         logger.setLevel(logging.INFO)
-    
+    config.file = file
+
+
     scrollphathd.rotate(180)
     scrollphathd.set_brightness(0.2)
     delay = 0.03
 
-
-    def refresh_data():
-        p_data = pickle.load(file)
-
-        # lines = []
-        # logger.debug('p_data type: %s',type(p_data))
-        
-        # if type(p_data) is list:
-        #     logger.debug('Process p_data list')
-        #     for i in iter(p_data):
-        #         for key, value in i.items():
-        #             if key == '_id':
-        #                 id_value = value
-        #                 # logger.debug(id_value)
-        #             if key == 'count':
-        #                 count_value = value
-        #                 # logger.debug(count_value)
-
-        #         data = str('%s : %s') % id_value, count_value
-        #         logger.debug('data: [%s] %s', type(data), data)
-        #         lines.append(data)
-                
-        # else:
-        #     logger.debug('single line')
-            # lines.append(str(p_data) + ' ')
-        
-        # logger.debug('words list: [%s] %s', type(lines), lines)
-        
-        scrollphathd.write_string(str(p_data).encode('utf-8'), x=0, y=0, font=font3x5, brightness=0.2)
 
     while True:
         refresh_data()
