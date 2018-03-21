@@ -48,27 +48,27 @@ def main(debug, file):
 
     logger.debug('p_data type: %s',type(p_data))
     
-    try:
-        lines = []
-        for i in iter(p_data):
-            for key, value in i.items():
-                if key == '_id':
-                    id_value = value
-                    # logger.debug(id_value)
-                if key == 'count':
-                    count_value = value
-                    # logger.debug(count_value)
+    # try:
+    #     lines = []
+    #     for i in iter(p_data):
+    #         for key, value in i.items():
+    #             if key == '_id':
+    #                 id_value = value
+    #                 # logger.debug(id_value)
+    #             if key == 'count':
+    #                 count_value = value
+    #                 # logger.debug(count_value)
 
-            data = str(id_value + count_value)
-            logger.debug('data type: %s', type(data))
-            logger.debug(data)
-            lines.append(data)
-            logger.debug('multi-line')
-    except:
-        lines = []
-        logger.debug('single line')
-        # logger.debug()
-        lines = lines.insert(0, str(p_data))
+    #         data = str(id_value + count_value)
+    #         logger.debug('data type: %s', type(data))
+    #         logger.debug(data)
+    #         lines.append(data)
+    #         logger.debug('multi-line')
+    # except:
+    lines = []
+    logger.debug('single line')
+    # logger.debug()
+    lines = lines.append(str(p_data))
     
     logger.debug('words list: [%s] %s', type(lines), lines)
 
