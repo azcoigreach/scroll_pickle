@@ -64,7 +64,7 @@ def main(debug, file):
             
             lines.append(data)
     except:
-        lines = lines.append(str(p_data))
+        lines = lines.append(p_data)
 
     logger.debug('words list: [%s] %s', type(lines), lines)
 
