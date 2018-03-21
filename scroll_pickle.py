@@ -64,7 +64,7 @@ def main(config, debug, file):
 
     scrollphathd.rotate(180)
     scrollphathd.set_brightness(0.3)
-    delay = 0.05
+    delay = 0.1
 
     while True:
         refresh_data()
