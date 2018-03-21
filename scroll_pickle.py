@@ -48,9 +48,8 @@ def main(debug, file):
 
     logger.debug('p_data type: %s',type(p_data))
     
-    lines = []
-
     try:
+        lines = []
         for i in iter(p_data):
             for key, value in i.items():
                 if key == '_id':
@@ -66,8 +65,11 @@ def main(debug, file):
             lines.append(data)
             logger.debug('multi-line')
     except:
-        lines = lines.insert(0, str(p_data))
+        lines = []
         logger.debug('single line')
+        logger.debug()
+        lines = lines.insert(0, str(p_data))
+    
     logger.debug('words list: [%s] %s', type(lines), lines)
 
     # Uncomment to rotate 180 degrees
