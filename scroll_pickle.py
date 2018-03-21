@@ -46,7 +46,7 @@ def main(debug, file):
     
     p_data = pickle.load(file)
 
-    logger.debug(type(p_data))
+    logger.debug('p_data type: %s',type(p_data))
     
     lines = []
 
