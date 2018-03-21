@@ -12,7 +12,7 @@ import coloredlogs
 import click
 from colorama import init, Fore
 import scrollphathd
-
+from scrollphathd.fonts import *
 
 coloredlogs.install(level='DEBUG')
 logger = logging.getLogger(__name__)
