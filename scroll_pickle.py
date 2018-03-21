@@ -49,7 +49,7 @@ def main(debug, file):
     lines = []
     logger.debug('p_data type: %s',type(p_data))
     
-    if type(p_data) == 'list':
+    if type(p_data) is list:
         logger.debug('Process p_data list')
         for i in iter(p_data):
             for key, value in i.items():
