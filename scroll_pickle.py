@@ -55,16 +55,16 @@ def main(debug, file):
             for key, value in i.items():
                 if key == '_id':
                     id_value = value
-                    logger.debug(id_value)
+                    # logger.debug(id_value)
                 if key == 'count':
                     count_value = value
-                    logger.debug(count_value)
+                    # logger.debug(count_value)
 
             data = str(id_value + ' : ' + count_value)
-            
+            logger.debug(data)
             lines.append(data)
     except:
-        lines = lines.append(p_data)
+        lines = lines.append(str(p_data))
 
     logger.debug('words list: [%s] %s', type(lines), lines)
 
