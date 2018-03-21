@@ -13,6 +13,7 @@ import click
 from colorama import init, Fore
 import scrollphathd
 from scrollphathd.fonts import *
+from threading import Thread
 
 coloredlogs.install(level='DEBUG')
 logger = logging.getLogger(__name__)
@@ -27,17 +28,30 @@ pass_config = click.make_pass_decorator(Config, ensure=True)
 @pass_config
 def refresh_data(config):
     # config.p_data = 'hello '
-    config.p_data = pickle.load(config.file)
-    config.p_data = str(config.p_data).encode('utf-8')
-    logger.debug('p_data [%s] %s - refresh',type(config.p_data), config.p_data)
-        
+    
+    refresh = 5
+    
+    while True:
+        config.p_data = pickle.load(config.file)
+        config.p_data = str(config.p_data).encode('utf-8')
+        logger.debug('p_data [%s] %s - refresh',type(config.p_data), config.p_data)
+        time.sleep(refresh)
+            
 
 @pass_config
 def display_data(config):
-    logger.debug('p_data [%s] %s - display',type(config.p_data), config.p_data)
+    # logger.debug('p_data [%s] %s - display',type(config.p_data), config.p_data)
+    
+    scrollphathd.rotate(180)
+    scrollphathd.set_brightness(0.3)
+    delay = 0.1
+    
     scrollphathd.write_string(config.p_data, x=0, y=0, font=font5x7, brightness=0.5)
-    scrollphathd.show()
-    scrollphathd.scroll()
+    
+    while True:
+        scrollphathd.show()
+        scrollphathd.scroll()
+        time.sleep(delay)
 
 
 # Scoll Pickle
@@ -62,11 +76,10 @@ def main(config, debug, file):
         logger.setLevel(logging.INFO)
     config.file = file
 
-    scrollphathd.rotate(180)
-    scrollphathd.set_brightness(0.3)
-    delay = 0.1
+    t1 = Thread(target=refresh_data, args=(config))
+    t2 = Thread(target=display_data, args=(config))
 
-    while True:
-        refresh_data()
-        display_data()
-        time.sleep(delay)
+    t1.start()
+    t2.start()
+
+    logger.debug('Main Process Completed')
