@@ -69,7 +69,7 @@ def main(debug, file):
    
     # logger.debug('single line')
     # logger.debug()
-    lines = lines.append(p_data)
+    lines.append(str(p_data))
     
     logger.debug('words list: [%s] %s', type(lines), lines)
 
