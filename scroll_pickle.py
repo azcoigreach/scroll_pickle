@@ -49,8 +49,8 @@ def main(debug, file):
     lines = []
     logger.debug('p_data type: %s',type(p_data))
     
-    try:
-        logger.debug('multi-line')
+    if type(p_data) == 'list':
+        logger.debug('Process p_data list')
         for i in iter(p_data):
             for key, value in i.items():
                 if key == '_id':
@@ -64,7 +64,7 @@ def main(debug, file):
             logger.debug('data: [%s] %s', type(data), data)
             lines.append(data)
             
-    except:
+    else:
         logger.debug('single line')
         lines.append(str(p_data) + ' ')
         
