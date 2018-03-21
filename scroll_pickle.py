@@ -60,7 +60,7 @@ def main(debug, file):
                     count_value = value
                     # logger.debug(count_value)
 
-            data = str('%s : %s', id_value, count_value)
+            data = str('%s : %s') % id_value, count_value
             logger.debug('data: [%s] %s', type(data), data)
             lines.append(data)
             
