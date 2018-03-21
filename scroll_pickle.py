@@ -49,31 +49,31 @@ def main(debug, file):
     def refresh_data():
         p_data = pickle.load(file)
 
-        lines = []
-        logger.debug('p_data type: %s',type(p_data))
+        # lines = []
+        # logger.debug('p_data type: %s',type(p_data))
         
-        if type(p_data) is list:
-            logger.debug('Process p_data list')
-            for i in iter(p_data):
-                for key, value in i.items():
-                    if key == '_id':
-                        id_value = value
-                        # logger.debug(id_value)
-                    if key == 'count':
-                        count_value = value
-                        # logger.debug(count_value)
+        # if type(p_data) is list:
+        #     logger.debug('Process p_data list')
+        #     for i in iter(p_data):
+        #         for key, value in i.items():
+        #             if key == '_id':
+        #                 id_value = value
+        #                 # logger.debug(id_value)
+        #             if key == 'count':
+        #                 count_value = value
+        #                 # logger.debug(count_value)
 
-                data = str('%s : %s') % id_value, count_value
-                logger.debug('data: [%s] %s', type(data), data)
-                lines.append(data)
+        #         data = str('%s : %s') % id_value, count_value
+        #         logger.debug('data: [%s] %s', type(data), data)
+        #         lines.append(data)
                 
-        else:
-            logger.debug('single line')
-            lines.append(str(p_data) + ' ')
+        # else:
+        #     logger.debug('single line')
+            # lines.append(str(p_data) + ' ')
         
-        logger.debug('words list: [%s] %s', type(lines), lines)
+        # logger.debug('words list: [%s] %s', type(lines), lines)
         
-        scrollphathd.write_string(ord(lines), x=0, y=0, font=font3x5, brightness=0.2)
+        scrollphathd.write_string(ord(p_data), x=0, y=0, font=font3x5, brightness=0.2)
 
     while True:
         refresh_data()
