@@ -65,6 +65,13 @@ def main(config, debug, file):
     delay = 0.03
 
     while True:
-        refresh_data()
-        display_data()
+        # refresh_data()
+        # display_data()
+
+        config.p_data = pickle.load(config.file)
+        scrollphathd.write_string(str(config.p_data), x=0, y=0, font=font5x7, brightness=0.2)
+        scrollphathd.show()
+        scrollphathd.scroll()
+
+
         time.sleep(delay)
