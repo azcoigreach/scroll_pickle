@@ -73,7 +73,7 @@ def main(debug, file):
         
         logger.debug('words list: [%s] %s', type(lines), lines)
         
-        scrollphathd.write_string(lines, x=0, y=0, font=font5x7, brightness=0.5)
+        scrollphathd.write_string(lines, x=0, y=0, font=font3x5, brightness=0.2)
 
     while True:
         refresh_data()
