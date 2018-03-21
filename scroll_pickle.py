@@ -23,13 +23,18 @@ class Config(object):
 
 pass_config = click.make_pass_decorator(Config, ensure=True)
 
+
 @pass_config
 def refresh_data(config):
-        p_data = pickle.load(config.file)
-
-        logger.debug('p_data type: %s',type(p_data))
+    p_data = pickle.load(config.file)
+    logger.debug('p_data type: %s',type(p_data))
         
-        scrollphathd.write_string(str(p_data).encode('utf-8'), x=0, y=0, font=font3x5, brightness=0.2)
+
+@pass_config
+def display_data(config):
+    scrollphathd.write_string(str(p_data), x=0, y=0, font=font3x5, brightness=0.2)
+    scrollphathd.show()
+    scrollphathd.scroll()
 
 
 # Scoll Pickle
@@ -41,10 +46,8 @@ def refresh_data(config):
 def main(config, debug, file):
     '''
     ** Scroll pickle data on Pimoroni Scroll Phat HD. **
-
     \b
     scroll_pickle [filename].pickle
-
     \b
     ** Requires ScrollPhatHD hardware with RaspberryPi **
     '''
@@ -56,15 +59,11 @@ def main(config, debug, file):
         logger.setLevel(logging.INFO)
     config.file = file
 
-
     scrollphathd.rotate(180)
     scrollphathd.set_brightness(0.2)
     delay = 0.03
 
-
     while True:
         refresh_data()
-
-        scrollphathd.show()
-        scrollphathd.scroll()
+        
         time.sleep(delay)
