@@ -46,6 +46,7 @@ def main(debug, file):
     
     p_data = pickle.load(file)
 
+    lines = []
     logger.debug('p_data type: %s',type(p_data))
     
     # try:
@@ -65,10 +66,10 @@ def main(debug, file):
     #         lines.append(data)
     #         logger.debug('multi-line')
     # except:
-    lines = []
-    logger.debug('single line')
+   
+    # logger.debug('single line')
     # logger.debug()
-    lines = lines.append(str(p_data))
+    # lines = lines.append(str(p_data))
     
     logger.debug('words list: [%s] %s', type(lines), lines)
 
