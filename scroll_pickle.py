@@ -64,9 +64,10 @@ def main(debug, file):
             logger.debug('data type: %s', type(data))
             logger.debug(data)
             lines.append(data)
+            logger.debug('multi-line')
     except:
         lines = lines.append(str(p_data))
-
+        logger.debug('single line')
     logger.debug('words list: [%s] %s', type(lines), lines)
 
     # Uncomment to rotate 180 degrees
