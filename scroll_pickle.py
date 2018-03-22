@@ -72,7 +72,7 @@ def refresh_data():
             
 
 # @pass_config
-def display_data():
+def display_data(p_data='No Data '):
     config = get_current_context(silent=True)
     
     
@@ -110,8 +110,10 @@ def main(config, debug, file):
         logger.setLevel(logging.INFO)
     config.file = file
 
-    t1 = threading.Thread(target=refresh_data, args=(config, ))
-    t2 = threading.Thread(target=display_data, args=(config, ))
+    # t1 = threading.Thread(target=refresh_data, args=(config, ))
+    # t2 = threading.Thread(target=display_data, args=(config, ))
+    t1 = threading.Thread(target=refresh_data)
+    t2 = threading.Thread(target=display_data)
 
     t1.start()
     t2.start()
