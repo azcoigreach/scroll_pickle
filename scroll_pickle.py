@@ -58,7 +58,7 @@ def pop_config():
 
 # @pass_config
 def refresh_data():
-    config = get_current_context(silent=True)
+    config = get_current_config(silent=True)
     logger.debug('config [%s] %s @ refresh_data',type(config), config)
 
     refresh = 5
@@ -73,7 +73,7 @@ def refresh_data():
 
 # @pass_config
 def display_data(p_data='No Data '):
-    config = get_current_context(silent=True)
+    config = get_current_config(silent=True)
     
     
     scrollphathd.rotate(180)
